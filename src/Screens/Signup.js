@@ -3,6 +3,7 @@ import { View,StyleSheet,Text,Image } from 'react-native';
 import Button from '../components/button'
 import TextField from '../components/textfield'
 import { fonts, Custom_Width } from '../constants';
+
 class Signup extends Component {
     state = {  }
     render() {

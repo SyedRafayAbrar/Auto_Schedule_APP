@@ -6,7 +6,7 @@ import { TouchableOpacity,StyleSheet, Text } from 'react-native';
 import { fonts } from '../constants';
 const button = (props,navigation) => {
     return (
-        <TouchableOpacity style={styles._touchable} onPress={() => navigation.navigate('{props.navItem}')}>
+        <TouchableOpacity style={styles._touchable} onPress={props.onScreenChange}>
             <Text style={{color:"white", fontFamily:fonts.med}}>{props.name}</Text>
         </TouchableOpacity>
     );
