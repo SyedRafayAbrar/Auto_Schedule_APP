@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import Authstack from './src/routes/authStack';
+import SwitchStack from './src/routes/index.js';
+import AppStack from './src/routes/appStack';
 
 class App extends Component {
   state = {  }
   
   render() {
-    return <Authstack></Authstack>
+    return <AppStack/>
   }
 }
 

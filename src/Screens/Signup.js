@@ -20,7 +20,8 @@ class Signup extends Component {
                 <TextField placeholder={"Username"} label={"Username"}></TextField>
                 <TextField placeholder={"Email"} label={"Email"}></TextField>
                 <TextField placeholder={"Password"} label={"Password"}></TextField>
-                <Button name={"SignUp"}></Button>
+                
+                <Button name={"SignUp"} onScreenChange={()=>this.props.navigation.navigate("Home")}></Button>
             </View>
         );
     }

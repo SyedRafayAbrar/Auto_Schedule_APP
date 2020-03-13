@@ -32,7 +32,7 @@ class Selection extends Component {
         <Button name={"SignUp"} onScreenChange={()=>this.props.navigation.navigate("SignUp")}></Button>
         
         <View style={{width:10, }}></View>
-        <Button name={"SignIn"} navItem={"SignIn"} onScreenChange={()=>this.props.navigation.navigate("SignUp")}></Button>
+        <Button name={"SignIn"} navItem={"SignIn"} onScreenChange={()=>this.props.navigation.navigate("SignIn")}></Button>
         </View>
         </View>
        
