@@ -29,10 +29,10 @@ class Selection extends Component {
         <View style={{flex:1}} >
         
         <View style={{ flex: 1, flexDirection: 'row', justifyContent:"center"}}>
-        <Button name={"SignUp"} onScreenChange={()=>this.props.navigation.navigate("SignUp")}></Button>
+        <Button name={"SignUp"} onScreenChange={()=>this.props.navigation.navigate("signUp")}></Button>
         
         <View style={{width:10, }}></View>
-        <Button name={"SignIn"} navItem={"SignIn"} onScreenChange={()=>this.props.navigation.navigate("SignIn")}></Button>
+        <Button name={"SignIn"} navItem={"SignIn"} onScreenChange={()=>this.props.navigation.navigate("signIn")}></Button>
         </View>
         </View>
        

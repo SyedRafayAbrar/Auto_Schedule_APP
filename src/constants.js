@@ -4,6 +4,10 @@ export function Custom_Width(size){
     return Dimensions.get('window').width-size
 }
 
+export function Ratio_Width(size){
+    return size/Dimensions.get('window').width
+}
+
 export function Custom_Font(size){
     return Dimensions.get('window').height
 }
