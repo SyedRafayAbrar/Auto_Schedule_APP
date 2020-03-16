@@ -1,10 +1,28 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import { View,StyleSheet,Text,Image,TouchableOpacity } from 'react-native';
 import { fonts, Custom_Width } from '../constants';
 
 
 class Home extends Component {
-    state = {  }
+    state = {  
+    'teacher_count':0,
+    'course_count' : 0,
+    'time_slots_count':0,
+    'rooms_count':0
+ }
+ componentDidMount(){
+    axios.get('http://127.0.0.1:8000/api/getcount').then(res=>{
+        console.log(res.data)
+        this.setState({
+            teacher_count:res.data.data.teacher_count,
+            course_count:res.data.data.course_count,
+            time_slots_count: res.data.data.timeslot_count,
+            rooms_count:res.data.data.rooms_count
+
+        })
+    })
+ }
     render() {
         return (
             <View style={styles.container}>
@@ -15,14 +33,14 @@ class Home extends Component {
                         <TouchableOpacity  style={styles._boxes0} onPress={()=>this.props.navigation.navigate('Teachers')}>
                         
                         <Text style={styles._title}>Lecturers</Text>
-                        <Text style={styles._text}>20</Text>
+                        <Text style={styles._text}>{this.state.teacher_count}</Text>
                         
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles._boxes1} >
 
                         <Text style={styles._title}>Rooms</Text>
-                        <Text style={styles._text}>20</Text>
+                        <Text style={styles._text}>{this.state.rooms_count}</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -30,16 +48,16 @@ class Home extends Component {
 
                     <View style={{flex:1,flexDirection:"row"}}>
 
-                    <TouchableOpacity style={styles._boxes2}>
+                    <TouchableOpacity style={styles._boxes2} onPress={()=>this.props.navigation.navigate('Courses')}>
                         
                         <Text style={styles._title}>Courses</Text>
-                        <Text style={styles._text}>20</Text>
+                        <Text style={styles._text}>{this.state.course_count}</Text>
                         
                         </TouchableOpacity>
                         <TouchableOpacity style={styles._boxes3}>
                         
                         <Text style={styles._title}>TimeSlots</Text>
-                        <Text style={styles._text}>20</Text>
+                        <Text style={styles._text}>{this.state.time_slots_count}</Text>
                         
                         </TouchableOpacity>
                     </View>

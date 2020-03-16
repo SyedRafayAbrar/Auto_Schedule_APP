@@ -1,53 +1,54 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { View,Button,StyleSheet,Text,Image,TouchableOpacity,Platform,Alert, FlatList, } from 'react-native';
 import { fonts, Custom_Width } from '../constants';
 
 
 
-let userList = [
-    {
-        'id':'1',
-        'fn':'Ali',
-        'ln':'Ghafoor',
-        'age':15,
-        'gpa':3.48
-      },
-      {
-        'id':'2',
-        'fn':'Ali',
-        'ln':'Ghafoor',
-        'age':15,
-        'gpa':3.48
-      },
-      {
-        'id':'3',
-        'fn':'Ali',
-        'ln':'Ghafoor',
-        'age':15,
-        'gpa':3.48
-      },
-      {
-        'id':'4',
-        'fn':'Ali',
-        'ln':'Ghafoor',
-        'age':15,
-        'gpa':3.48
-      },
-      {
-        'id':'5',
-        'fn':'Ali',
-        'ln':'Ghafoor',
-        'age':15,
-        'gpa':3.48
-      },
-      {
-        'id':'6',
-        'fn':'Ali',
-        'ln':'Ghafoor',
-        'age':15,
-        'gpa':3.48
-      }
-];
+// let userList = [
+//     {
+//         'id':'1',
+//         'fn':'Ali',
+//         'ln':'Ghafoor',
+//         'age':15,
+//         'gpa':3.48
+//       },
+//       {
+//         'id':'2',
+//         'fn':'Ali',
+//         'ln':'Ghafoor',
+//         'age':15,
+//         'gpa':3.48
+//       },
+//       {
+//         'id':'3',
+//         'fn':'Ali',
+//         'ln':'Ghafoor',
+//         'age':15,
+//         'gpa':3.48
+//       },
+//       {
+//         'id':'4',
+//         'fn':'Ali',
+//         'ln':'Ghafoor',
+//         'age':15,
+//         'gpa':3.48
+//       },
+//       {
+//         'id':'5',
+//         'fn':'Ali',
+//         'ln':'Ghafoor',
+//         'age':15,
+//         'gpa':3.48
+//       },
+//       {
+//         'id':'6',
+//         'fn':'Ali',
+//         'ln':'Ghafoor',
+//         'age':15,
+//         'gpa':3.48
+//       }
+// ];
 
 class Teachers extends Component {
     constructor(props){
@@ -60,21 +61,35 @@ class Teachers extends Component {
     }
 
     onItemClicked(item){
-        Alert.alert("Title",item.fn);
+      days = ""
+      {item.availability.map(element => 
+        days+=element
+        // <Text>{element}</Text>
+      ) }
+        Alert.alert("Title",days);
     }
 
     
   _renderItem = ({item}) => 
-  <View style={{flex:1,width:'100%', padding:20,borderColor:'#FF0000',borderWidth:1}}>
-      <Text style={{textAlign:'center',margin:10}}>{item.fn}</Text>
-      <Text style={{textAlign:'center',margin:10}}>{item.ln}</Text>
-      <TouchableOpacity onPress={this.onItemClicked.bind(this,item)} style={{alignItems:'center',justifyContent:'center'}}>
-        <Text style={{textAlign:'center',margin:10,fontSize:16,fontWeight:'600'}}>Click Here</Text>
+  <View style={styles.itemContainer}>
+
+      <Text style={styles.item_Header_Text}>{item.professor_name}</Text>
+      <Text style={styles.itemText}>{item.professor_email}</Text>
+     
+      <TouchableOpacity onPress={this.onItemClicked.bind(this,item)} style={{borderBottomWidth:1,
+        borderColor:"white",marginTop:10,alignItems:'center'}}>
+        <Text style={{textAlign:'center',color:"white",margin:10,fontSize:16,fontWeight:'600'}}>Click Here to see availability</Text>
       </TouchableOpacity>
   </View> 
 
 onPress = () => {
-    this.setState({data:userList,isReloaded:true})
+  axios.get('http://127.0.0.1:8000/api/professors').then(res=>{
+    const professors = res.data.data
+    
+    console.log(professors)
+    this.setState({data:professors,isReloaded:true})
+  })
+    
 }
 renderCondition(){
     if (this.state.isReloaded == false){
@@ -111,7 +126,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: "white",
   },
   welcome: {
     fontSize: 20,
@@ -123,6 +138,31 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  itemText:{
+    fontFamily: fonts.light,
+    textAlign:"left",
+    color:"white",
+    fontSize:30,
+  },
+  item_Header_Text:{
+    fontFamily: fonts.med,
+    textAlign:"left",
+    color:"white",
+    fontSize:50,
+  },
+  itemContainer:{
+    flexDirection:"column",
+    marginTop:20,
+    flex:1,
+    width:'100%',
+    paddingLeft:20,
+    paddingRight:20,
+    paddingTop:20,
+    paddingBottom:5,
+    // padding:20,
+    borderRadius:10,
+    backgroundColor:"rgb(36,162,183)"
+  }
 });
 
 
