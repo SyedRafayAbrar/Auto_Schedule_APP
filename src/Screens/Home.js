@@ -12,7 +12,8 @@ class Home extends Component {
     'rooms_count':0
  }
  componentDidMount(){
-    axios.get('http://127.0.0.1:8000/api/getcount').then(res=>{
+    axios.get('http://68.183.118.157:8000/api/getcount')
+    .then(res=>{
         console.log(res.data)
         this.setState({
             teacher_count:res.data.data.teacher_count,
@@ -21,6 +22,8 @@ class Home extends Component {
             rooms_count:res.data.data.rooms_count
 
         })
+    }).catch((err)=>{
+        console.warn(err)
     })
  }
     render() {

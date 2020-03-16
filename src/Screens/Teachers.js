@@ -83,7 +83,7 @@ class Teachers extends Component {
   </View> 
 
 onPress = () => {
-  axios.get('http://127.0.0.1:8000/api/professors').then(res=>{
+  axios.get('http://68.183.118.157:8000/api/professors').then(res=>{
     const professors = res.data.data
     
     console.log(professors)
