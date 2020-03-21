@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View,Button,StyleSheet,Text,Image,TouchableOpacity,Platform,Alert, FlatList, } from 'react-native';
-import { fonts, Custom_Width } from '../constants';
+import { fonts, Custom_Width } from '../utils/constants';
 
 
 

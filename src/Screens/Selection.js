@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View,StyleSheet,Text,Image } from 'react-native';
 import Button from '../components/button'
 import TextField from '../components/textfield'
-import { fonts, Custom_Width } from '../constants';
+import { fonts, Custom_Width } from '../utils/constants';
 class Selection extends Component {
     state = {  }
     render() {

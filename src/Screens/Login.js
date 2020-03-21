@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { View,StyleSheet,Text,Image } from 'react-native';
 import Button from '../components/button'
 import TextField from '../components/textfield'
-import { fonts, Custom_Width } from '../constants';
+import SwitchStack from '../routes/index.js';
+import AppStack from '../routes/appStack.js';
+
+import { fonts, Custom_Width } from '../utils/constants';
 class Login extends Component {
     state = {  }
     render() {
@@ -18,9 +21,9 @@ class Login extends Component {
         backgroundColor:"gray"}}></View>
                 </View>
                 
-                <TextField placeholder={"Email"} label={"Email"}></TextField>
-                <TextField placeholder={"Password"} label={"Password"}></TextField>
-                <Button name={"login"}></Button>
+                <TextField placeholder={"Email"}  isSecure={false} label={"Email"}></TextField>
+                <TextField placeholder={"Password"}  isSecure={true} label={"Password"}></TextField>
+                <Button name={"login"} onScreenChange={()=>this.props.navigation.navigate("App")}></Button>
             </View>
         );
     }

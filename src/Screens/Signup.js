@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View,StyleSheet,Text,Image } from 'react-native';
 import Button from '../components/button'
 import TextField from '../components/textfield'
-import { fonts, Custom_Width } from '../constants';
+import { fonts, Custom_Width } from '../utils/constants';
 
 class Signup extends Component {
     state = {  }
@@ -16,10 +16,10 @@ class Signup extends Component {
                 <View style={{height:1,
         backgroundColor:"gray"}}></View>
                 </View>
-                <TextField placeholder={"Full Name"} label={"Full Name"}></TextField>
-                <TextField placeholder={"Username"} label={"Username"}></TextField>
-                <TextField placeholder={"Email"} label={"Email"}></TextField>
-                <TextField placeholder={"Password"} label={"Password"}></TextField>
+                <TextField placeholder={"Full Name"} isSecure={false} label={"Full Name"}></TextField>
+                <TextField placeholder={"Username"} isSecure={false} label={"Username"}></TextField>
+                <TextField placeholder={"Email"} isSecure={false} label={"Email"}></TextField>
+                <TextField placeholder={"Password"} isSecure={true} label={"Password"}></TextField>
                 
                 <Button name={"SignUp"} onScreenChange={()=>this.props.navigation.navigate("Home")}></Button>
             </View>

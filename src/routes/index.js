@@ -1,20 +1,13 @@
-// import React, { Component } from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
+import React, { Component } from 'react';
+import { createSwitchNavigator, createStackNavigator,createAppContainer } from 'react-navigation';
 // import { createStackNavigator } from '@react-navigation/stack';
-// import Auth from './authStack';
-// import Home from '../Screens/Home';
-// // import Check from '../screens/Check/Check';
-// const indexStack = () => {
+import Auth from './authStack';
+import Home from './appStack';
 
-// const Stack = createStackNavigator();
-//         return(
-//             <NavigationContainer>
-//             <Stack.Navigator>
-//               <Stack.Screens name="auth" component={Auth} />   
-//               {/* <Stack.Stack name="home" component={Home} />       */}
-//             </Stack.Navigator>
-//           </NavigationContainer>
-//         );
-// }
+const SwitchStack = createSwitchNavigator({
+    // Loader: Check,
+    // Auth: Auth,
+    App: Home,
+})
 
-// export default (indexStack)
+export default createAppContainer(SwitchStack)

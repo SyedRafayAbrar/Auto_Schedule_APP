@@ -8,7 +8,8 @@ class App extends Component {
   state = {  }
   
   render() {
-    return <AppStack/>
+
+    return <SwitchStack/>
   }
 }
 

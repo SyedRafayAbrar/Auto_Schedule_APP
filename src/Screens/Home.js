@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { View,StyleSheet,Text,Image,TouchableOpacity } from 'react-native';
-import { fonts, Custom_Width } from '../constants';
+import { fonts, Custom_Width } from '../utils/constants';
 
 
 class Home extends Component {

@@ -2,7 +2,7 @@ import React from 'react';
 
 
 import { TouchableOpacity,StyleSheet, Text } from 'react-native';
-import { fonts } from '../constants';
+import { fonts } from '../utils/constants';
 const button = (props) => {
     return (
         <TouchableOpacity style={styles._touchable} onPress={props.onScreenChange}>
@@ -12,7 +12,7 @@ const button = (props) => {
 }
 const styles = StyleSheet.create({
     _touchable: 
-        { width: 150, height: 40,marginTop:10, justifyContent: 'center', alignItems: 'center', backgroundColor: "rgb(43,157,179)",borderRadius:5 }
+        { alignSelf:"center",width: 150, height: 40,marginTop:10, justifyContent: 'center', alignItems: 'center', backgroundColor: "rgb(43,157,179)",borderRadius:5 }
     
 })
 export default button;
