@@ -12,13 +12,15 @@ import Courses from '../Screens/Courses';
 import SideMenu from '../Screens/SideMenu';
 import  _addTeacher from '../Screens/addTeacher';
 import  _addRoom from '../Screens/addRoom';
+import  _addCourse from '../Screens/addCourses';
 
 const MainNavigator = createStackNavigator({
   Home: {screen: Home},
   Teachers: {screen: Teachers},
   Courses: {screen: Courses},
   addTeacher:{screen: _addTeacher},
-  addRoom:{screen: _addRoom}
+  addRoom:{screen: _addRoom},
+  addCourse:{screen: _addCourse}
 });
 
 export const appStack = createAppContainer(MainNavigator);

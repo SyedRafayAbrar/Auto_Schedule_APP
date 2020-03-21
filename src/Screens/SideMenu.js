@@ -28,7 +28,7 @@ onPress = () => {
            <Image source={pic} style={{alignSelf:"center",width: 193, height: 110}}/>
            <SideMenuButton name={"Add Teacher"} onScreenChange={()=>this.props.navigation.navigate("addTeacher")}/>
            <SideMenuButton name={"Add Room"} onScreenChange={()=>this.props.navigation.navigate("addRoom")}/>
-           <SideMenuButton name={"Add Course"} onScreenChange={()=>this.props.navigation.navigate("addRoom")}/>
+           <SideMenuButton name={"Add Course"} onScreenChange={()=>this.props.navigation.navigate("addCourse")}/>
         </SafeAreaView>
 
   
