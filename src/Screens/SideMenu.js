@@ -29,6 +29,8 @@ onPress = () => {
            <SideMenuButton name={"Add Teacher"} onScreenChange={()=>this.props.navigation.navigate("addTeacher")}/>
            <SideMenuButton name={"Add Room"} onScreenChange={()=>this.props.navigation.navigate("addRoom")}/>
            <SideMenuButton name={"Add Course"} onScreenChange={()=>this.props.navigation.navigate("addCourse")}/>
+           <SideMenuButton name={"Add Semester"} onScreenChange={()=>this.props.navigation.navigate("addSemester")}/>
+           <SideMenuButton name={"Add Period"} onScreenChange={()=>this.props.navigation.navigate("addPeriod")}/>
         </SafeAreaView>
 
   

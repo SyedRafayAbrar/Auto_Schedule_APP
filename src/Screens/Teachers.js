@@ -4,52 +4,6 @@ import { View,Button,StyleSheet,Text,Image,TouchableOpacity,Platform,Alert, Flat
 import { fonts, Custom_Width } from '../utils/constants';
 
 
-
-// let userList = [
-//     {
-//         'id':'1',
-//         'fn':'Ali',
-//         'ln':'Ghafoor',
-//         'age':15,
-//         'gpa':3.48
-//       },
-//       {
-//         'id':'2',
-//         'fn':'Ali',
-//         'ln':'Ghafoor',
-//         'age':15,
-//         'gpa':3.48
-//       },
-//       {
-//         'id':'3',
-//         'fn':'Ali',
-//         'ln':'Ghafoor',
-//         'age':15,
-//         'gpa':3.48
-//       },
-//       {
-//         'id':'4',
-//         'fn':'Ali',
-//         'ln':'Ghafoor',
-//         'age':15,
-//         'gpa':3.48
-//       },
-//       {
-//         'id':'5',
-//         'fn':'Ali',
-//         'ln':'Ghafoor',
-//         'age':15,
-//         'gpa':3.48
-//       },
-//       {
-//         'id':'6',
-//         'fn':'Ali',
-//         'ln':'Ghafoor',
-//         'age':15,
-//         'gpa':3.48
-//       }
-// ];
-
 class Teachers extends Component {
     constructor(props){
         super(props);
@@ -104,19 +58,11 @@ return ( <FlatList
     }
 }
 
-
-
   render() {
     return (
-        
-    
       <View style={styles.container}>
           {this.renderCondition()}
-          
-         
       </View>
-      
-        
     );
   }
 }

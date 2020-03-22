@@ -13,6 +13,9 @@ import SideMenu from '../Screens/SideMenu';
 import  _addTeacher from '../Screens/addTeacher';
 import  _addRoom from '../Screens/addRoom';
 import  _addCourse from '../Screens/addCourses';
+import  _addSemester from '../Screens/addSemester';
+import  _addPeriod from '../Screens/addPeriod';
+
 
 const MainNavigator = createStackNavigator({
   Home: {screen: Home},
@@ -20,7 +23,9 @@ const MainNavigator = createStackNavigator({
   Courses: {screen: Courses},
   addTeacher:{screen: _addTeacher},
   addRoom:{screen: _addRoom},
-  addCourse:{screen: _addCourse}
+  addCourse:{screen: _addCourse},
+  addSemester:{screen: _addSemester},
+  addPeriod:{screen: _addPeriod}
 });
 
 export const appStack = createAppContainer(MainNavigator);
