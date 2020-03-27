@@ -7,7 +7,7 @@ import TextField from '../components/textfield'
 import AddTeacherModal from './AddTeacherModal';
 
 import { fonts, Custom_Width,SCREEN_WIDTH } from '../utils/constants';
-class addRoom extends Component {
+class addDay extends Component {
     state = {
         
        switch1Value: false,
@@ -51,7 +51,7 @@ class addRoom extends Component {
                 <View style={{marginBottom:50,}}>
                 <Text style={styles._header}>Add<Text style={{ fontFamily:fonts.light,
         fontSize:30,
-        textAlign:"center"}}> Room</Text>
+        textAlign:"center"}}> Day</Text>
                 </Text>
                 
                 <View style={{height:1,
@@ -61,7 +61,7 @@ class addRoom extends Component {
                 <TextField placeholder={"Day Name"} isSecure={false} label={"Day Name"}></TextField>
 
              
-                <Button name={"Submit"} onScreenChange={}></Button>
+                <Button name={"Submit"} onScreenChange={()=>this.props.navigation.navigate("addDay")}></Button>
 
                
             </View>
@@ -84,4 +84,4 @@ const styles=StyleSheet.create({
         
     }
 })
-export default addRoom;
+export default addDay;

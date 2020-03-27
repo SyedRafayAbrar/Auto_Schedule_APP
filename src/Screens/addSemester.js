@@ -1,87 +1,117 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text,Picker } from 'react-native';
+import { View,StyleSheet,Text,Image,Switch,TouchableOpacity} from 'react-native';
+import Button from '../components/button'
+import axios from 'axios'
+import TextField from '../components/textfield'
 
+import AddTeacherModal from './AddTeacherModal';
 
-get_time_List=(interval,start_Time)=>{
-    var result = [];                      // Results will go here
-    var am_pm = "AM"
-//    interval = 15
-    var int = 60/interval
-    var interVal_Hour = 0
-    for(var i = start_Time;i<24;i++){
-        // interVal_Hour += i
-        if (i == 12){
-            am_pm = "PM"
-        }
-        for(var j = 0;j<int;j++){
-            interVal_Hour+=interval
-            if (interVal_Hour == 60){
-                
-                var r = `${i+1}:00 ${am_pm}`
-            result.push(r)
-            }else{
-                var r = `${i}:${interVal_Hour} ${am_pm}`
-            result.push(r)
-            }
-            
-        }
-        interVal_Hour = 0
-    }
-  
-    console.log(result); // show results
-return result
-}
-
-getTime=()=>{
-    // for get_time_List(15,6);
-    {get_time_List(15,6).map(element => 
-        <Picker.Item label={element} value="java" />
-      ) }
-   
-}
-
-class AddSemester extends Component {
+import { fonts, Custom_Width,SCREEN_WIDTH } from '../utils/constants';
+class addSemester extends Component {
     state = {
-        selectedHours: 0,
-        selectedtime:"",
-        selectedMinutes: 0,
+        isTimeModalVisible: false,
+       switch1Value: false,
+       users: [
+    ],
+    selectedUsers: [
+       
+    ],
+    }
+
+    componentDidMount(){
+        axios.get('http://68.183.118.157:8000/api/courses').then(res=>{
+            // console.log(res.data)
+            var courses = []
+            {res.data.data.map(element => 
+                courses.push({"id":element.course_id,"name":element.course_name})
+                // <Text>{element}</Text>
+              ) }
+            this.setState({
+                users:courses
+            })
+        })
+    }
+     onUserInvite = (item) => {
+        const items = this.state.selectedUsers;
+        items.push(item)
+        this.setState({ selectedUsers: items });
+    }
+
+     toggleAddTeacherModal = () => {
+        // this.setState({data:professors,isReloaded:true})
+        this.setState({
+            isTimeModalVisible:!this.state.isTimeModalVisible
+        })
+    }
+
+    toggleSwitch1 = () => {
+        this.setState({switch1Value: !this.state.switch1Value})
         
-      }
-      render() {
-        const { selectedHours, selectedMinutes } = this.state;
-        
+        console.log('Switch 1 is: ' + this.state.switch1Value)
+     }
+
+     switchFunc=()=>{
+        if (this.state.switch1Value){
+
+        }
+     }
+
+     onRemoveUser = (item, index) => {
+        const items = this.state.selectedUsers.filter((sitem) => sitem.id !== item.id);
+        this.setState({ selectedUsers: items });
+    }
+    render() {
         return (
-          <View style={styles.container}>
-           
-           <Picker
-            selectedValue={this.state.language}
-            style={{height: 50, width: 100}}
-            onValueChange={(itemValue, itemIndex) =>
-            this.setState({selectedtime: itemValue})
-                }>
-                {get_time_List(15,6).map(element => 
-                <Picker.Item label={element} value="java" />
-                )}
- 
-  <Text>{ Date.now().toString}</Text>
-   
-   {/* <DatePickerIOS></DatePickerIOS> */}
-</Picker>
+            <View style={styles.container}>
+                <View style={{marginBottom:50,}}>
+                <Text style={styles._header}>Add<Text style={{ fontFamily:fonts.light,
+        fontSize:30,
+        textAlign:"center"}}> Semester</Text>
+                </Text>
+                
+                <View style={{height:1,
+        backgroundColor:"gray"}}></View>
+                </View>
+                
+                <TextField placeholder={"Semester Name"} isSecure={false} label={"Semester Name"}></TextField>
 
-          </View>
+                <TextField placeholder={"Meetings per week"} isSecure={false} label={"Meetings per week"}></TextField>
+
+        <TouchableOpacity onPress={this.toggleAddTeacherModal} style={{marginTop:20,borderWidth:1,paddingLeft:5,paddingRight:5,height:60,borderRadius:5}}>
+        <Text style={{ marginTop:10,fontFamily:fonts.bold,
+        color:"rgb(39,44,49)",
+        fontSize:30,
+        textAlign:"center"}}>Press to select Semester</Text>
+        </TouchableOpacity>
+        <AddTeacherModal
+                    isModalVisible={this.state.isTimeModalVisible}
+                    toggleModal={this.toggleAddTeacherModal}
+                    onItemSelect={this.onUserInvite}
+                    selectedUsers={this.state.selectedUsers}
+                    onRemoveItem={this.onRemoveUser}
+                    users={this.state.users}
+                />
+                <Button name={"Submit"} onScreenChange={()=>this.props.navigation.navigate("addSemester")}></Button>
+
+               
+            </View>
         );
-      }
+    }
 }
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      marginLeft:50,
-      marginRight:50,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
-  
 
-export default AddSemester;
+const styles=StyleSheet.create({
+    container:{
+        backgroundColor:"white",
+        flex:1,
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    _header:{
+        fontFamily:fonts.bold,
+        color:"rgb(39,44,49)",
+        fontSize:30,
+        textAlign:"center"
+        
+    }
+})
+export default addSemester;

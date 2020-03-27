@@ -31,12 +31,13 @@ onPress = () => {
            <SideMenuButton name={"Add Course"} onScreenChange={()=>this.props.navigation.navigate("addCourse")}/>
            <SideMenuButton name={"Add Semester"} onScreenChange={()=>this.props.navigation.navigate("addSemester")}/>
            <SideMenuButton name={"Add Period"} onScreenChange={()=>this.props.navigation.navigate("addPeriod")}/>
+           <SideMenuButton name={"Add Day"} onScreenChange={()=>this.props.navigation.navigate("addDay")}/>
+           <View style={{alignSelf:"center",marginTop:20}}>
+           <TouchableOpacity style={styles.profile_button} onPress={()=>this.props.navigation.navigate("addDay")}><Text style={{alignSelf:"center",fontFamily:fonts.med,fontSize:20}}>Profile</Text></TouchableOpacity>
+           </View>
+           
         </SafeAreaView>
 
-  
-  
-          
-       
    );
   }
 }
@@ -49,6 +50,15 @@ const styles = StyleSheet.create({
         shadowColor: "darkgrey"
 
   },
+  profile_button:{
+    height:100,
+    width:100,
+    borderRadius:50,
+    borderWidth:2,
+    alignContent:"center",
+    justifyContent:"center",
+    
+  }
   
 });
 
