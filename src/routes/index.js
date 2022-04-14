@@ -6,8 +6,8 @@ import Home from './appStack';
 
 const SwitchStack = createSwitchNavigator({
     // Loader: Check,
-    // Auth: Auth,
-    App: Home,
+    Auth: Auth,
+    // App: Home,
 })
 
 export default createAppContainer(SwitchStack)

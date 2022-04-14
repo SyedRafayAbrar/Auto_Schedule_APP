@@ -5,7 +5,7 @@ import { Custom_Width, fonts } from '../utils/constants';
 
 const textfield = (props) => {
     return (
-        <View style={styles.container}>
+        <View style={styles.container}> 
             <Text style={{color:"black", fontFamily:fonts.med}}>{props.label}</Text>
             <TextInput secureTextEntry={props.isSecure} placeholder={props.placeholder} style={styles._textfield}></TextInput>
         </View>
